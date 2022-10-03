@@ -13,6 +13,7 @@ namespace net_3
 
             string operation;
             string yesOrNo;
+            var calculator = new Calculator();
 
             do
             {
@@ -28,12 +29,12 @@ namespace net_3
                     Console.WriteLine("Enter number 2: ");
                     num2 = Convert.ToDouble(Console.ReadLine());
 
-                    Options();
+                    calculator.Options();
 
                     Console.WriteLine("Enter an option: ");
                     operation = Console.ReadLine();
 
-                    Console.WriteLine(Calculate(num1, num2, operation));
+                    Console.WriteLine(calculator.Calculate(num1, num2, operation));
 
                     Console.WriteLine("Would you like to continue? (Y = yes, N = No): ");
                     yesOrNo = Console.ReadLine();
@@ -83,39 +84,6 @@ namespace net_3
             }
         }
 
-        private static string Calculate(double num1, double num2, string operation)
-        {
-            switch (operation)
-            {
-                case "*":
-                    return string.Format($"Your result: {num1} {operation} {num2} = {num1 * num2}");
-
-                case "+":
-                    return string.Format($"Your result: {num1} {operation} {num2} = {num1 + num2}");
-
-                case "-":
-                    return string.Format($"Your result: {num1} {operation} {num2} = {num1 - num2}");
-
-                case "/":
-                    if (num2 == 0)
-                    {
-                        throw new DivideByZeroException();
-                    }
-                    return string.Format($"Your result: {num1} {operation} {num2} = {num1 / num2}");
-
-                default:
-                    return "That was not a valid option";
-            }
-        }
-
-        private static void Options()
-        {
-            Console.WriteLine("Options:");
-            Console.WriteLine("\t + : Add");
-            Console.WriteLine("\t - : Subtract");
-            Console.WriteLine("\t * : Multiply");
-            Console.WriteLine("\t / : Divide");
-        }
 
         private static void Greeting()
         {
